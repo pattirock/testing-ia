@@ -1,3 +1,4 @@
+import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Hero } from '../Hero';
@@ -76,6 +77,6 @@ describe('Hero Component', () => {
 
   it('should have proper semantic structure', () => {
     render(<Hero title="Welcome" />);
-    expect(screen.getByRole('region')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
   });
 });
