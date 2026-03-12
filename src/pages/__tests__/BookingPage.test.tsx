@@ -16,7 +16,7 @@ describe('BookingPage', () => {
 
   it('should render page title', () => {
     renderWithRouter(<BookingPage />);
-    expect(screen.getByText(/Reserva tu Sesión/i)).toBeInTheDocument();
+    expect(screen.getByText(/Reservar una Sesión/i)).toBeInTheDocument();
   });
 
   it('should render form container', () => {

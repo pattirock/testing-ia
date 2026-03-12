@@ -30,14 +30,15 @@ describe('Header Component', () => {
   it('should toggle mobile menu when hamburger is clicked', () => {
     renderWithRouter(<Header />);
     const menuToggle = screen.getByRole('button', { name: '' });
+    const nav = screen.getByRole('navigation');
 
     fireEvent.click(menuToggle);
     // Menu should be open
-    expect(menuToggle.parentElement).toHaveClass('open');
+    expect(nav).toHaveClass('open');
 
     fireEvent.click(menuToggle);
     // Menu should be closed
-    expect(menuToggle.parentElement).not.toHaveClass('open');
+    expect(nav).not.toHaveClass('open');
   });
 
   it('should have proper semantic structure', () => {
