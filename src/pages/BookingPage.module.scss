@@ -1,0 +1,151 @@
+@import '@styles/variables.scss';
+
+.page {
+  min-height: 100vh;
+  background-color: $light-bg;
+  padding: $spacing-xxl $spacing-lg;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: $light;
+  padding: $spacing-xxl $spacing-xl;
+  border-radius: $border-radius-base;
+  border: 1px solid $gray-200;
+
+  h1 {
+    margin-bottom: $spacing-md;
+    color: $dark;
+    font-size: 32px;
+  }
+
+  .subtitle {
+    color: $text-muted;
+    margin-bottom: $spacing-xxl;
+    font-size: $font-size-lg;
+  }
+
+  .error {
+    background-color: #ffe5e5;
+    border: 1px solid #ffcccc;
+    color: #d32f2f;
+    padding: $spacing-md;
+    border-radius: $border-radius-base;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.form {
+  @include flex(column, flex-start, stretch, $spacing-xl);
+
+  fieldset {
+    border: 1px solid $gray-300;
+    border-radius: $border-radius-base;
+    padding: $spacing-lg;
+    margin-bottom: $spacing-lg;
+
+    legend {
+      padding: 0 $spacing-md;
+      font-weight: 600;
+      color: $dark;
+      font-size: 16px;
+    }
+  }
+
+  .formGroup {
+    @include flex(column, flex-start, stretch, $spacing-sm);
+    margin-bottom: $spacing-lg;
+
+    label {
+      font-weight: 600;
+      color: $dark;
+      font-size: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: $spacing-md;
+      border: 1px solid $gray-300;
+      background-color: $light;
+      border-radius: $border-radius-base;
+      font-size: $font-size-base;
+      transition: all $transition-base;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-accent;
+        box-shadow: 0 0 0 3px rgba($primary-accent, 0.08);
+      }
+
+      &:disabled {
+        background-color: $gray-100;
+        border-color: $gray-200;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      font-family: inherit;
+    }
+  }
+
+  .formRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+
+    @include media('tablet') {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.actions {
+  @include flex(row, flex-end, center, $spacing-md);
+  margin-top: $spacing-xxl;
+  padding-top: $spacing-lg;
+  border-top: 1px solid $gray-200;
+}
+
+.submitBtn,
+.cancelBtn {
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-base;
+  font-weight: 600;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all $transition-base;
+  border: 1px solid;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.submitBtn {
+  background-color: $primary-accent;
+  color: white;
+  border-color: $primary-accent;
+
+  &:hover:not(:disabled) {
+    background-color: darken($primary-accent, 10%);
+    border-color: darken($primary-accent, 10%);
+  }
+}
+
+.cancelBtn {
+  background-color: $light;
+  color: $dark;
+  border-color: $gray-300;
+
+  &:hover {
+    background-color: $gray-100;
+    border-color: $gray-400;
+  }
+}

@@ -1,0 +1,118 @@
+@import '@styles/variables.scss';
+
+.card {
+  background: $light;
+  border: 1px solid $gray-200;
+  border-radius: $border-radius-base;
+  overflow: hidden;
+  transition: all $transition-base;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $primary-accent;
+    box-shadow: $box-shadow-base;
+  }
+
+  .image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .content {
+    padding: $spacing-lg;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    margin-bottom: $spacing-sm;
+    color: $dark;
+    font-size: 20px;
+  }
+
+  .description {
+    color: $text-muted;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-md;
+    flex-grow: 1;
+    line-height: 1.6;
+  }
+
+  .details {
+    @include flex(row, space-between, center);
+    margin-bottom: $spacing-lg;
+    padding: $spacing-md 0;
+    border-top: 1px solid $gray-200;
+    border-bottom: 1px solid $gray-200;
+    font-weight: 500;
+
+    .duration,
+    .price {
+      font-size: $font-size-sm;
+      color: $text-muted;
+    }
+
+    .price {
+      color: $primary-accent;
+      font-size: $font-size-lg;
+      font-weight: 600;
+    }
+  }
+
+  .benefits {
+    margin-bottom: $spacing-lg;
+    flex-grow: 1;
+
+    strong {
+      display: block;
+      margin-bottom: $spacing-sm;
+      color: $dark;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    ul {
+      list-style: none;
+      font-size: $font-size-sm;
+      color: $text-muted;
+
+      li {
+        padding: $spacing-xs 0;
+        padding-left: $spacing-md;
+        position: relative;
+
+        &:before {
+          content: '→';
+          position: absolute;
+          left: 0;
+          color: $primary-accent;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .selectBtn {
+    background-color: $primary-accent;
+    color: white;
+    padding: $spacing-md;
+    border-radius: $border-radius-base;
+    font-weight: 600;
+    transition: all $transition-base;
+    border: 1px solid $primary-accent;
+
+    &:hover {
+      background-color: darken($primary-accent, 10%);
+      border-color: darken($primary-accent, 10%);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}

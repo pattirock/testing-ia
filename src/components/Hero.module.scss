@@ -1,0 +1,83 @@
+@import '@styles/variables.scss';
+
+.hero {
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include media('mobile') {
+    min-height: 350px;
+    background-attachment: scroll;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba($dark, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.content {
+  text-align: center;
+  color: $light;
+  z-index: 2;
+  max-width: 700px;
+  padding: $spacing-xl $spacing-lg;
+
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: $spacing-md;
+    color: $light;
+    letter-spacing: -1px;
+    line-height: 1.2;
+
+    @include media('mobile') {
+      font-size: 32px;
+    }
+
+    @include media('desktop') {
+      font-size: 56px;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: $spacing-lg;
+    color: rgba($light, 0.9);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+}
+
+.ctaBtn {
+  background-color: $primary-accent;
+  color: $light;
+  font-weight: 600;
+  font-size: 15px;
+  padding: $spacing-md $spacing-xl;
+  border-radius: $border-radius-base;
+  transition: all $transition-base;
+  border: 1px solid $primary-accent;
+
+  &:hover {
+    background-color: darken($primary-accent, 10%);
+    border-color: darken($primary-accent, 10%);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}

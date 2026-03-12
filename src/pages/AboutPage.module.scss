@@ -1,0 +1,242 @@
+@import '@styles/variables.scss';
+
+.page {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include media('tablet') {
+    padding: 0 $spacing-xl;
+  }
+}
+
+.mission {
+  padding: $spacing-xxl $spacing-lg;
+  background-color: $light-bg;
+  border-bottom: 1px solid $gray-200;
+
+  .container {
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: $spacing-lg;
+    color: $dark;
+    font-size: 36px;
+  }
+
+  p {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-lg;
+    color: $text-muted;
+    line-height: 1.8;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.values {
+  padding: $spacing-xxl $spacing-lg;
+
+  .container {
+    h2 {
+      text-align: center;
+      margin-bottom: $spacing-xxl;
+      color: $dark;
+      font-size: 36px;
+    }
+  }
+
+  .valuesGrid {
+    @include grid(1, $spacing-xl);
+
+    @include media('tablet') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media('desktop') {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .value {
+    background: $light;
+    padding: $spacing-xl;
+    border-radius: $border-radius-base;
+    border: 1px solid $gray-200;
+    text-align: center;
+    transition: all $transition-base;
+
+    &:hover {
+      border-color: $primary-accent;
+      box-shadow: $box-shadow-sm;
+    }
+
+    h3 {
+      margin-bottom: $spacing-md;
+      color: $dark;
+      font-size: 18px;
+    }
+
+    p {
+      color: $text-muted;
+      font-size: $font-size-sm;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+  }
+}
+
+.therapists {
+  padding: $spacing-xxl $spacing-lg;
+  background-color: $light-bg;
+  border-top: 1px solid $gray-200;
+
+  .container {
+    h2 {
+      text-align: center;
+      margin-bottom: $spacing-xxl;
+      color: $dark;
+      font-size: 36px;
+    }
+  }
+
+  .loading {
+    text-align: center;
+    padding: $spacing-xxl;
+    color: $text-muted;
+  }
+
+  .grid {
+    @include grid(1, $spacing-xl);
+
+    @include media('tablet') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media('desktop') {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .therapistCard {
+    background: $light;
+    padding: $spacing-xl;
+    border-radius: $border-radius-base;
+    border: 1px solid $gray-200;
+    text-align: center;
+    transition: all $transition-base;
+
+    &:hover {
+      border-color: $primary-accent;
+      box-shadow: $box-shadow-base;
+    }
+
+    .therapistImage {
+      margin-bottom: $spacing-lg;
+    }
+
+    .avatar {
+      @include flex(row, center, center);
+      width: 80px;
+      height: 80px;
+      border-radius: $border-radius-full;
+      background: $primary-accent;
+      color: white;
+      font-weight: 600;
+      font-size: $font-size-lg;
+      margin: 0 auto;
+    }
+
+    h3 {
+      margin: $spacing-md 0;
+      color: $dark;
+      font-size: 18px;
+    }
+
+    .experience {
+      color: $primary-accent;
+      font-weight: 600;
+      margin-bottom: $spacing-md;
+      font-size: 14px;
+    }
+
+    .bio {
+      color: $text-muted;
+      font-size: $font-size-sm;
+      margin-bottom: $spacing-lg;
+      line-height: 1.6;
+    }
+
+    .specializations {
+      @include flex(row, center, center, $spacing-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .badge {
+      background-color: rgba($primary-accent, 0.1);
+      color: $primary-accent;
+      padding: $spacing-xs $spacing-md;
+      border-radius: $border-radius-full;
+      font-size: $font-size-sm;
+      font-weight: 500;
+    }
+  }
+}
+
+.contact {
+  padding: $spacing-xxl $spacing-lg;
+  background: $primary-accent;
+  color: $light;
+
+  .container {
+    h2 {
+      text-align: center;
+      margin-bottom: $spacing-xxl;
+      color: $light;
+      font-size: 32px;
+    }
+  }
+
+  .contactGrid {
+    @include grid(1, $spacing-lg);
+
+    @include media('tablet') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .contactItem {
+    text-align: center;
+
+    h4 {
+      color: rgba($light, 0.95);
+      margin-bottom: $spacing-md;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    p,
+    a {
+      color: rgba($light, 0.9);
+
+      a {
+        font-weight: 600;
+
+        &:hover {
+          color: $light;
+        }
+      }
+    }
+  }
+}

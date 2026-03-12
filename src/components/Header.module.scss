@@ -1,0 +1,136 @@
+@import '@styles/variables.scss';
+
+.header {
+  background: $light;
+  border-bottom: 1px solid $gray-200;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .container {
+    @include flex(row, space-between, center);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: $spacing-lg $spacing-lg;
+    gap: $spacing-xl;
+
+    @include media('tablet') {
+      padding: $spacing-lg $spacing-xl;
+    }
+  }
+}
+
+.logo {
+  @include flex(row, center, center, $spacing-md);
+  font-size: $font-size-lg;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: $dark;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $primary-accent;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .name {
+    @include media('mobile') {
+      display: none;
+    }
+  }
+}
+
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  gap: $spacing-sm;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+
+  @include media('mobile') {
+    @include flex(column, center, center, $spacing-sm);
+  }
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: $dark;
+    transition: all $transition-base;
+
+    &:nth-child(2) {
+      width: 20px;
+    }
+  }
+
+  &.open span {
+    &:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+  }
+}
+
+.nav {
+  @include flex(row, flex-end, center, $spacing-lg);
+
+  @include media('mobile') {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: $light;
+    border-bottom: 1px solid $gray-200;
+    gap: $spacing-md;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition-base;
+
+    &.open {
+      max-height: 350px;
+      padding: $spacing-lg;
+    }
+  }
+
+  a {
+    color: $primary-light;
+    font-weight: 500;
+    font-size: 15px;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius-base;
+    transition: all $transition-base;
+
+    &:hover {
+      color: $primary-accent;
+    }
+  }
+}
+
+.bookBtn {
+  background-color: $primary-accent;
+  color: white;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-base;
+  font-size: 14px;
+  border: 1px solid $primary-accent;
+
+  &:hover {
+    background-color: darken($primary-accent, 10%);
+    border-color: darken($primary-accent, 10%);
+    color: white;
+  }
+}

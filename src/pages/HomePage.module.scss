@@ -1,0 +1,176 @@
+@import '@styles/variables.scss';
+
+.home {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include media('tablet') {
+    padding: 0 $spacing-xl;
+  }
+}
+
+.intro {
+  background-color: $light-bg;
+  text-align: center;
+  border-bottom: 1px solid $gray-200;
+
+  .container {
+    padding: $spacing-xxl $spacing-lg;
+  }
+
+  h2 {
+    margin-bottom: $spacing-lg;
+    color: $dark;
+    font-size: 36px;
+  }
+
+  p {
+    font-size: $font-size-lg;
+    color: $text-muted;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    line-height: 1.7;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: $spacing-xxl;
+  color: $gray-500;
+}
+
+.services {
+  background-color: $light;
+  padding: $spacing-xxl $spacing-lg;
+
+  .container {
+    h2 {
+      text-align: center;
+      margin-bottom: $spacing-xxl;
+      color: $dark;
+      font-size: 36px;
+    }
+  }
+
+  .grid {
+    @include grid(1, $spacing-xl);
+
+    @include media('tablet') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media('desktop') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.benefits {
+  padding: $spacing-xxl $spacing-lg;
+  background-color: $light-bg;
+  border-top: 1px solid $gray-200;
+
+  h2 {
+    text-align: center;
+    margin-bottom: $spacing-xxl;
+    color: $dark;
+    font-size: 36px;
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+  }
+
+  .featureGrid {
+    @include grid(1, $spacing-xl);
+
+    @include media('tablet') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media('desktop') {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .feature {
+    background: $light;
+    padding: $spacing-xl;
+    border-radius: $border-radius-base;
+    border: 1px solid $gray-200;
+    text-align: center;
+    transition: all $transition-base;
+
+    &:hover {
+      border-color: $primary-accent;
+      box-shadow: $box-shadow-sm;
+    }
+
+    .icon {
+      font-size: 40px;
+      display: block;
+      margin-bottom: $spacing-lg;
+    }
+
+    h3 {
+      margin-bottom: $spacing-md;
+      color: $dark;
+      font-size: 18px;
+    }
+
+    p {
+      color: $text-muted;
+      font-size: $font-size-sm;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+  }
+}
+
+.cta {
+  background: $primary-accent;
+  color: $light;
+  text-align: center;
+  padding: $spacing-xxl $spacing-lg;
+
+  .container {
+    max-width: 700px;
+  }
+
+  h2 {
+    color: $light;
+    margin-bottom: $spacing-md;
+    font-size: 32px;
+  }
+
+  p {
+    color: rgba($light, 0.95);
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-lg;
+    line-height: 1.7;
+  }
+
+  .ctaBtn {
+    background-color: $light;
+    color: $primary-accent;
+    font-weight: 600;
+    font-size: 15px;
+    padding: $spacing-md $spacing-xl;
+    border-radius: $border-radius-base;
+    transition: all $transition-base;
+    border: 1px solid $light;
+
+    &:hover {
+      background-color: rgba($light, 0.9);
+      border-color: $light;
+    }
+  }
+}
