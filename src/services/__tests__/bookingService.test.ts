@@ -1,5 +1,4 @@
 import { bookingService } from '../bookingService';
-import { Booking } from '../../types';
 
 describe('bookingService', () => {
   describe('createBooking', () => {

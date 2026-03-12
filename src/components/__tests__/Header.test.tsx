@@ -30,11 +30,11 @@ describe('Header Component', () => {
   it('should toggle mobile menu when hamburger is clicked', () => {
     renderWithRouter(<Header />);
     const menuToggle = screen.getByRole('button', { name: '' });
-    
+
     fireEvent.click(menuToggle);
     // Menu should be open
     expect(menuToggle.parentElement).toHaveClass('open');
-    
+
     fireEvent.click(menuToggle);
     // Menu should be closed
     expect(menuToggle.parentElement).not.toHaveClass('open');
