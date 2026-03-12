@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { BookingPage } from '../BookingPage';
 
@@ -57,5 +57,51 @@ describe('BookingPage', () => {
     const { container } = renderWithRouter(<BookingPage />);
     const section = container.querySelector('section');
     expect(section).toBeInTheDocument();
+  });
+
+  it('should display booking form fields', () => {
+    renderWithRouter(<BookingPage />);
+    expect(screen.getByText(/Información Personal/i)).toBeInTheDocument();
+  });
+
+  it('should have client name input field', () => {
+    renderWithRouter(<BookingPage />);
+    const nameInput = screen.getByLabelText(/Nombre/i);
+    expect(nameInput).toBeInTheDocument();
+  });
+
+  it('should have client email input field', () => {
+    renderWithRouter(<BookingPage />);
+    const emailInput = screen.getByLabelText(/Email/i);
+    expect(emailInput).toBeInTheDocument();
+  });
+
+  it('should have client phone input field', () => {
+    renderWithRouter(<BookingPage />);
+    const phoneInput = screen.getByLabelText(/Teléfono/i);
+    expect(phoneInput).toBeInTheDocument();
+  });
+
+  it('should allow user to type in form fields', () => {
+    renderWithRouter(<BookingPage />);
+    const nameInput = screen.getByLabelText(/Nombre/i) as HTMLInputElement;
+    const emailInput = screen.getByLabelText(/Email/i) as HTMLInputElement;
+
+    fireEvent.change(nameInput, { target: { value: 'Test User' } });
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+
+    expect(nameInput.value).toBe('Test User');
+    expect(emailInput.value).toBe('test@example.com');
+  });
+
+  it('should have form with proper structure', () => {
+    renderWithRouter(<BookingPage />);
+    const fieldsets = screen.getAllByRole('group');
+    expect(fieldsets.length).toBeGreaterThan(0);
+  });
+
+  it('should have subtitle text visible', () => {
+    renderWithRouter(<BookingPage />);
+    expect(screen.getByText(/Completa el formulario/i)).toBeInTheDocument();
   });
 });

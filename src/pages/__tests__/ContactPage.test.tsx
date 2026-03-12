@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { ContactPage } from '../ContactPage';
 
@@ -66,5 +66,46 @@ describe('ContactPage', () => {
     const { container } = renderWithRouter(<ContactPage />);
     const content = container.querySelector('section');
     expect(content).toBeInTheDocument();
+  });
+
+  it('should have contact information displayed', () => {
+    renderWithRouter(<ContactPage />);
+    // Verify contact form section exists
+    expect(screen.getByText(/Envíanos un Mensaje/i)).toBeInTheDocument();
+  });
+
+  it('should render contact form with all required fields', () => {
+    renderWithRouter(<ContactPage />);
+
+    const nameInput = screen.getByLabelText(/Nombre/i);
+    const emailInput = screen.getByLabelText(/Email/i);
+    const phoneInput = screen.getByLabelText(/Teléfono/i);
+    const subjectInput = screen.getByLabelText(/Asunto/i);
+    const messageInput = screen.getByLabelText(/Mensaje/i);
+
+    expect(nameInput).toBeInTheDocument();
+    expect(emailInput).toBeInTheDocument();
+    expect(phoneInput).toBeInTheDocument();
+    expect(subjectInput).toBeInTheDocument();
+    expect(messageInput).toBeInTheDocument();
+  });
+
+  it('should allow user to fill form inputs', () => {
+    renderWithRouter(<ContactPage />);
+
+    const nameInput = screen.getByLabelText(/Nombre/i) as HTMLInputElement;
+    const emailInput = screen.getByLabelText(/Email/i) as HTMLInputElement;
+
+    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
+    fireEvent.change(emailInput, { target: { value: 'john@example.com' } });
+
+    expect(nameInput.value).toBe('John Doe');
+    expect(emailInput.value).toBe('john@example.com');
+  });
+
+  it('should have submit button', () => {
+    renderWithRouter(<ContactPage />);
+    const submitButton = screen.getByRole('button', { name: /Enviar Mensaje/i });
+    expect(submitButton).toBeInTheDocument();
   });
 });

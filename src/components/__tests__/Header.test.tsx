@@ -52,4 +52,45 @@ describe('Header Component', () => {
     const inicioLink = screen.getByText('Inicio').closest('a');
     expect(inicioLink).toHaveAttribute('href', '/');
   });
+
+  it('should close menu when clicking on a navigation link', () => {
+    renderWithRouter(<Header />);
+    const menuToggle = screen.getByRole('button', { name: '' });
+    const nav = screen.getByRole('navigation');
+    const serviciosLink = screen.getByText('Servicios').closest('a');
+
+    // Open menu
+    fireEvent.click(menuToggle);
+    expect(nav).toHaveClass('open');
+
+    // Click on link should close menu
+    fireEvent.click(serviciosLink!);
+    expect(nav).not.toHaveClass('open');
+  });
+
+  it('should have all navigation links with correct hrefs', () => {
+    renderWithRouter(<Header />);
+
+    const inicioLink = screen.getByText('Inicio').closest('a');
+    const serviciosLink = screen.getByText('Servicios').closest('a');
+    const acercaLink = screen.getByText('Sobre Nosotros').closest('a');
+    const contactoLink = screen.getByText('Contacto').closest('a');
+
+    expect(inicioLink).toHaveAttribute('href', '/');
+    expect(serviciosLink).toHaveAttribute('href', '/services');
+    expect(acercaLink).toHaveAttribute('href', '/about');
+    expect(contactoLink).toHaveAttribute('href', '/contact');
+  });
+
+  it('should render logo as link to home', () => {
+    renderWithRouter(<Header />);
+    const logoLink = screen.getByText('✨').closest('a');
+    expect(logoLink).toHaveAttribute('href', '/');
+  });
+
+  it('should have booking button with booking route', () => {
+    renderWithRouter(<Header />);
+    const bookingBtn = screen.getByText('Reservar').closest('a');
+    expect(bookingBtn).toHaveAttribute('href', '/booking');
+  });
 });
